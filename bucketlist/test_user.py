@@ -58,7 +58,14 @@ class Usertest(unittest.TestCase):
         # defining method to test for null login password
     def test_login_null_password(self):
         result = self.newUser.login('cj@gmail.com', '')
-        self.assertEqual(4,result,"Please fill the password field")               
+        self.assertEqual(4,result,"Please fill the password field")    
+
+        # defining method to test for an existing user  
+    def test_existing_useremail(self):
+        self.newUser.users = {}
+        self.newUser.register('email@mail.com','cj', 'pass', 'pass')
+        result = self.newUser.register('email@mail.com', 'mash', 'pass123', 'pass123')
+        self.assertEqual(4,result,"user already exists")                
             
 if __name__ == "__main__":
     unittest.main()        
