@@ -57,4 +57,8 @@ class Bucketlist():
 
 	# defining method to get all bucket lists
 	def get_bucket_lists(self):
-		return self.Bucketlists						
+		return self.Bucketlists	
+		
+	# defining method to get one bucket lists
+	def get_bucket_list(self,post):
+		return self.Bucketlists[post]						
