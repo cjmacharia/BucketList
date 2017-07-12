@@ -61,4 +61,15 @@ class Bucketlist():
 		
 	# defining method to get one bucket lists
 	def get_bucket_list(self,post):
-		return self.Bucketlists[post]						
+		return self.Bucketlists[post]
+		
+		# defining method to create an item in a bucket
+	def createItem(self,post,item):
+		if item !='':
+			items={}
+			items['item']=item 
+			items['post']=post
+			BucketItems.append(items)
+			return 1
+		else:
+			return 2
