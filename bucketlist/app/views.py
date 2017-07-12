@@ -162,3 +162,19 @@ def editBucket():
 		
 	else:
 		return render_template('login.html')
+
+#defining route to create aa item in a bucketlist
+@app.route('/createitem/', methods=['GET', 'POST'])
+def addItems():
+	if g.user:
+		if request.method=="POST":
+			item =request.form['item']
+			post =request.form['post']
+			result=NewBucketlist.createItem(post,item)
+			if result==1:
+				BucketItems = NewBucketlist.getItems(post)
+				result = NewBucketlist.get_bucket_lists()       
+				return render_template('mybucketlist.html',datas=result,items=BucketItems)			
+		else:
+			return render_template('create.html' )
+	return render_template('login.html' )		
