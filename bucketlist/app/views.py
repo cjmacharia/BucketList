@@ -163,7 +163,7 @@ def editBucket():
 	else:
 		return render_template('login.html')
 
-#defining route to create aa item in a bucketlist
+#defining route to create an item in a bucketlist
 @app.route('/createitem/', methods=['GET', 'POST'])
 def addItems():
 	if g.user:
@@ -179,7 +179,7 @@ def addItems():
 			return render_template('create.html' )
 	return render_template('login.html' )	
 
-#defining route to create aa item in a bucketlist
+#defining route to create an item in a bucketlist
 @app.route('/edititem/<item>', methods=['GET','POST'])
 def editItem(item):
 	if g.user:
@@ -204,4 +204,22 @@ def editItem(item):
 				return render_template('mybucketlist.html',datas=result,items=BucketItems)		
 	else:
 		return render_template('login.html' )
+
+#defining route to detete an item from a bucketlist
+@app.route('/deleteitem', methods=['GET','POST'])
+def deleteItem():
+	if g.user:
+		item =request.form['item']
+		post=request.form['post']
+		result=NewBucketlist.deleteItem(item)
+		if result==True:
+			message="successfully deleted"
+			print(message)
+			BucketItems = NewBucketlist.getItems(post)
+			results = NewBucketlist.get_bucket_lists()			
+			return render_template('mybucketlist.html',datas=results,items=BucketItems )
+			#return redirect('/myBuckets/')
+		else:
+			return render_template('create.html')
+	return render_template('login.html')		
 
