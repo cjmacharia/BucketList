@@ -37,4 +37,21 @@ class Bucketlist():
 			del self.Bucketlists[post]		
 			return 1
 		else:
-			return 2				
+			return 2
+			
+		# defining method to delete bucket list		
+	def edit(self,old,post,description,owner):
+		if  post!='':
+			if description!='':
+				del self.Bucketlists[old]
+				self.Bucketlists[post] = {
+				'description':description,
+				'post':post,
+				'owner':owner,
+				}
+				return 1
+			else:
+				return 2	
+			
+		else:
+			return 3						
