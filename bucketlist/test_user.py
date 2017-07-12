@@ -24,7 +24,12 @@ class Usertest(unittest.TestCase):
         # defining method to test for creating user account with an empty email
     def test_register_null_email(self):
         output=self.newUser.register('','name','pass','pass')
-        self.assertEqual(6,output, "Email is Empty ")     
+        self.assertEqual(6,output, "Email is Empty ")    
+
+    # defining method to test for creating user account with an empty passsword field
+    def test_null_password(self):
+        output=self.newUser.register('test@email.com','mash','','pass')
+        self.assertEqual(5,output, "Please the password filed")      
             
 if __name__ == "__main__":
     unittest.main()        
