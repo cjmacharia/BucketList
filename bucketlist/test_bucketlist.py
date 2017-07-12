@@ -100,3 +100,8 @@ class Buckettest(unittest.TestCase):
         self.buckets.createItem('golf', 'By30')
         output=self.buckets.itemEdit('','By30')
         self.assertEqual(2,output,"The item can not be empty")             
+
+
+
+if __name__ == "__main__":
+    unittest.main()              
