@@ -85,4 +85,11 @@ class Buckettest(unittest.TestCase):
         self.buckets.BucketItems=[]
         self.buckets.createItem('Fashion','By20')
         output=self.buckets.deleteItem('By20')
-        self.assertEqual(1,output,"Item successfully deleted")     
+        self.assertEqual(1,output,"Item successfully deleted") 
+
+    	#defining method to test editing an  existing item
+    def tests_edit_item(self):
+        self.buckets.BucketItems=[]
+        self.buckets.createItem('golf', 'By30')
+        output=self.buckets.itemEdit('by40','By30')
+        self.assertEqual(1,output,"Item successfully edited")        
