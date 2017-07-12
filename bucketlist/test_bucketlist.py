@@ -53,3 +53,9 @@ class Buckettest(unittest.TestCase):
         output=self.buckets.edit('By28','by30','vlogger','anto@gmail.com')
         self.assertEqual(1,output,"bucket successfully edited")       
           
+    	# defining method to test for editing a bucketlist and leaving the title null
+    def tests_edit_null_title(self):
+        self.buckets.Bucketlists={} 
+        self.buckets.create('By28', 'my goals','anto@gmail.com')
+        output=self.buckets.edit('By28','','vlogger','anto@gmail.com')
+        self.assertEqual(3,output,"Please fill the title field")      
