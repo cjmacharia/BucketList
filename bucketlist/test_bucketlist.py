@@ -66,4 +66,10 @@ class Buckettest(unittest.TestCase):
         self.buckets.create('By28', 'my goals','anto@gmail.com')
         output=self.buckets.edit('By28','vlogger','','anto@gmail.com')
         self.assertEqual(2,output,"Please fill the description field")
+
+    #defining method to test adding an item in a bucketlist
+    def tests_Add_item(self):
+        self.buckets.BucketItems=[]
+        output=self.buckets.createItem('Fashion', 'By20')
+        self.assertEqual(1,output,"Item successfully added")     
     
