@@ -101,3 +101,28 @@ def getBuckets():
 		return render_template('mybucketlist.html',datas=result)
 	else:
 		return render_template('login.html')		
+
+#define route to delete a bucketlist
+@app.route('/delete/<post>')
+def delete(post):
+	if g.user:
+		print(post)
+		print(NewBucketlist.get_bucket_lists())
+		res=NewBucketlist.get_bucket_list(post)
+		if (res):
+			result=NewBucketlist.delete(post)
+			if result==True:
+				message="successfully deleted"
+				print(message)
+				return redirect('/myBuckets' )
+			else:
+				message="not deleted"
+				print(message)
+				return redirect('/myBuckets' )				
+		else:
+			message="not found"
+			print(message)
+			return render_template('create.html')
+	else:
+		return render_template('create.html')
+	return render_template('login.html')
