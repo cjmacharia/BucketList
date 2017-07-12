@@ -76,7 +76,7 @@ class Bucketlist():
 		# defining method to get one bucket lists		
 	def getItems(self,post):
 		return BucketItems		
-		
+
 		# defining method to create an item in a bucket	
 	def itemEdit(self,item,old):
 		if item!='':				
@@ -88,3 +88,14 @@ class Bucketlist():
 			        return 1
 		else:
 			return 2	
+
+		# defining method to delete an item from bucket			
+	def deleteItem(self,item):
+		print(BucketItems)
+		for dic in range(len(BucketItems)):
+		    if BucketItems[dic]['item'] == item:
+		        del BucketItems[dic]
+		        print(BucketItems)			
+		        return 1
+		else:
+			return 2		
