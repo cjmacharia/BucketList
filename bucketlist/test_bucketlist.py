@@ -20,3 +20,8 @@ class Buckettest(unittest.TestCase):
     def test_if_title_empty(self):
         output=self.buckets.create('','this is my bucketlist by the age of 29','owner')
         self.assertEqual(3,output, "please fill all fields")
+
+        # defining method to test for adding a bucket list with an empty description
+    def test_if_description_empty(self):
+        output=self.buckets.create('By 28','','anto@gmail.com')
+        self.assertEqual(3,output, "please fill the description")
