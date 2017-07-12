@@ -44,5 +44,12 @@ class Buckettest(unittest.TestCase):
         self.buckets.Bucketlists={}  
         self.buckets.create('By28', 'my goals','anto@gmail.com')
         output=self.buckets.delete('Bucket1')
-        self.assertEqual(2,output, "You can not delete a bucket thay does not exist")    
+        self.assertEqual(2,output, "You can not delete a bucket thay does not exist") 
+
+    	# defining method to test for editing a bucketlist
+    def tests_edit_bucket(self):
+        self.buckets.Bucketlists={} 
+        self.buckets.create('By28', 'my goals','anto@gmail.com')
+        output=self.buckets.edit('By28','by30','vlogger','anto@gmail.com')
+        self.assertEqual(1,output,"bucket successfully edited")       
           
