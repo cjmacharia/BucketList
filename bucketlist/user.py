@@ -47,4 +47,23 @@ class User():
  	        else:
  	        	return 6
     	else:
-	    	return 7    
+	    	return 7  
+
+	# defining method to validate user
+	def login(self, email, password):
+        if email!='':
+        	if password!='':
+	            if email in users.keys():
+	                result=users[email]
+	                pword=result['pass']
+	                if pword==password:
+	                    return 1
+	                    print ('done')
+	                else:
+	                    return 2
+	            else:
+	                return 3
+	        else:
+	            return 4
+    	else:
+	    	return 5        
