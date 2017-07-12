@@ -32,9 +32,17 @@ class Buckettest(unittest.TestCase):
         output=self.buckets.create('By28', 'my goals','anto@gmail.com')
         self.assertEqual(2,output, "That bucket already exists!") 
 
-     # defining method to test for deleting a bucketlist
+     	# defining method to test for deleting a bucketlist
     def tests_bucket_delete(self):
         self.buckets.Bucketlists={}  
         self.buckets.create('By28', 'my goals','anto@gmail.com')
         output=self.buckets.delete('By28')
-        self.assertEqual(1,output, "Succesfully deleted!")        
+        self.assertEqual(1,output, "Succesfully deleted!")  
+
+		# defining method to test for deleting a bucketlist That doesnot exist
+    def tests_delete_NonExistent_bucketlist(self):
+        self.buckets.Bucketlists={}  
+        self.buckets.create('By28', 'my goals','anto@gmail.com')
+        output=self.buckets.delete('Bucket1')
+        self.assertEqual(2,output, "You can not delete a bucket thay does not exist")    
+          
