@@ -60,7 +60,7 @@ class Buckettest(unittest.TestCase):
         output=self.buckets.edit('By28','','vlogger','anto@gmail.com')
         self.assertEqual(3,output,"Please fill the title field")      
 
-    # defining method to test for editing a bucketlist and leaving the Description null
+    	# defining method to test for editing a bucketlist and leaving the Description null
     def tests_edit_null_description(self):
         self.buckets.Bucketlists={} 
         self.buckets.create('By28', 'my goals','anto@gmail.com')
@@ -73,9 +73,16 @@ class Buckettest(unittest.TestCase):
         output=self.buckets.createItem('Fashion', 'By20')
         self.assertEqual(1,output,"Item successfully added")  
            
-    #defining method to test deleting an item that doesn't exist in a bucketlist
+    	#defining method to test deleting an item that doesn't exist in a bucketlist
     def tests_delete_null_item(self):
         self.buckets.BucketItems=[]
         self.buckets.createItem('Fashion', 'By20')
         output=self.buckets.deleteItem('fish')
         self.assertEqual(2,output,"Cannot Delete an item that does not exist")
+
+    	#deining method to test deleting an  existing item
+    def tests_delete_items(self):
+        self.buckets.BucketItems=[]
+        self.buckets.createItem('Fashion','By20')
+        output=self.buckets.deleteItem('By20')
+        self.assertEqual(1,output,"Item successfully deleted")     
