@@ -41,7 +41,14 @@ class Usertest(unittest.TestCase):
         self.newUser.users = {}
         self.newUser.register( 'email@mail.com', 'cj','pass', 'pass')
         result = self.newUser.login('email@mail.com', 'pass123')
-        self.assertEqual(2,result,"password mismatch")         
+        self.assertEqual(2,result,"password mismatch") 
+          
+    # defining method to test if login email is equal to register email
+    def test_wrong_login_email(self):
+        self.newUser.users = {}
+        self.newUser.register('cj', 'email@mail.com', 'pass', 'pass')
+        result = self.newUser.login('cj@gmail.com', 'pass')
+        self.assertEqual(3,result,"wrong email try again")          
             
 if __name__ == "__main__":
     unittest.main()        
