@@ -236,3 +236,9 @@ def protected():
         return render_template('home.html')
 
     return redirect(url_for('logins'))
+
+@app.before_request
+def before_request():
+    g.user = None
+    if 'user' in session:
+        g.user = session['user']
