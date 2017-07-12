@@ -67,3 +67,11 @@ class User():
 	            return 4
     	else:
 	    	return 5        
+
+    	#function to get a user
+	def get_user_name(self, email):
+        if email in users.keys():
+            result =users[email]
+            return result['name']
+        else:
+            return False
