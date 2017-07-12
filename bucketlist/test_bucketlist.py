@@ -92,4 +92,11 @@ class Buckettest(unittest.TestCase):
         self.buckets.BucketItems=[]
         self.buckets.createItem('golf', 'By30')
         output=self.buckets.itemEdit('by40','By30')
-        self.assertEqual(1,output,"Item successfully edited")        
+        self.assertEqual(1,output,"Item successfully edited")
+
+    #defining method to test editing an empty item field
+    def tests_edit_null_item(self):
+        self.buckets.BucketItems=[]
+        self.buckets.createItem('golf', 'By30')
+        output=self.buckets.itemEdit('','By30')
+        self.assertEqual(2,output,"The item can not be empty")             
