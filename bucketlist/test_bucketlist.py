@@ -25,83 +25,89 @@ class Buckettest(unittest.TestCase):
     def test_if_description_empty(self):
         output=self.buckets.create('By 28','','anto@gmail.com')
         self.assertEqual(3,output, "please fill the description")
-
         # defining method to test for adding a bucket list That already exists
     def tests_if_bucket_exists(self):
         self.buckets.create('By28','my dreams by 28','anto@gmail.com')  
         output=self.buckets.create('By28', 'my goals','anto@gmail.com')
         self.assertEqual(2,output, "That bucket already exists!") 
 
-     	# defining method to test for deleting a bucketlist
-    def tests_bucket_delete(self):
+        # defining method to test for deleting a bucketlist
+    def tests_delete_bucket(self):
         self.buckets.Bucketlists={}  
         self.buckets.create('By28', 'my goals','anto@gmail.com')
         output=self.buckets.delete('By28')
-        self.assertEqual(1,output, "Succesfully deleted!")  
+        self.assertEqual(1,output, "Succesfully deleted!")
 
-		# defining method to test for deleting a bucketlist That doesnot exist
-    def tests_delete_NonExistent_bucketlist(self):
+        # defining method to test for deleting a bucketlist That doesnot exist
+    def tests_delete_NonExistant_bucketlist(self):
         self.buckets.Bucketlists={}  
         self.buckets.create('By28', 'my goals','anto@gmail.com')
         output=self.buckets.delete('Bucket1')
-        self.assertEqual(2,output, "You can not delete a bucket thay does not exist") 
+        self.assertEqual(2,output, "You can not delete a bucket thay does not exist")    
 
-    	# defining method to test for editing a bucketlist
+
+        # defining method to test for editing a bucketlist
     def tests_edit_bucket(self):
         self.buckets.Bucketlists={} 
         self.buckets.create('By28', 'my goals','anto@gmail.com')
         output=self.buckets.edit('By28','by30','vlogger','anto@gmail.com')
-        self.assertEqual(1,output,"bucket successfully edited")       
-          
-    	# defining method to test for editing a bucketlist and leaving the title null
+        self.assertEqual(1,output,"bucket successfully edited")
+
+        # defining method to test for editing a bucketlist and leaving the title null
     def tests_edit_null_title(self):
         self.buckets.Bucketlists={} 
-        self.buckets.create('By50', 'my goals','anto@gmail.com')
-        output=self.buckets.edit('By50','','vlogger','anto@gmail.com')
-        self.assertEqual(3,output,"Please fill the title field")      
+        self.buckets.create('By28', 'my goals','anto@gmail.com')
+        output=self.buckets.edit('By28','','vlogger','anto@gmail.com')
+        self.assertEqual(3,output,"Please fill the title field")
 
-    	# defining method to test for editing a bucketlist and leaving the Description null
+        # defining method to test for editing a bucketlist and leaving the Description null
     def tests_edit_null_description(self):
         self.buckets.Bucketlists={} 
         self.buckets.create('By28', 'my goals','anto@gmail.com')
         output=self.buckets.edit('By28','vlogger','','anto@gmail.com')
         self.assertEqual(2,output,"Please fill the description field")
 
-    #defining method to test adding an item in a bucketlist
+
+        #defining method to test adding an item in a bucketlist
     def tests_Add_item(self):
         self.buckets.BucketItems=[]
         output=self.buckets.createItem('Fashion', 'By20')
-        self.assertEqual(1,output,"Item successfully added")  
-           
-    	#defining method to test deleting an item that doesn't exist in a bucketlist
+        self.assertEqual(1,output,"Item successfully added")
+
+    def tests_addEmpty_item(self):
+        self.buckets.BucketItems=[]
+        output=self.buckets.createItem('post', '')
+        self.assertEqual(2,output,"Cannot add an empty item ") 
+
+        #defining method to test deleting an item that doesn't exist in a bucketlist
     def tests_delete_null_item(self):
         self.buckets.BucketItems=[]
         self.buckets.createItem('Fashion', 'By20')
         output=self.buckets.deleteItem('fish')
-        self.assertEqual(2,output,"Cannot Delete an item that does not exist")
+        self.assertEqual(2,output,"Cannot Delete an item that does not exist") 
 
-    	#deining method to test deleting an  existing item
+        #defining method to test deleting an  existing item
     def tests_delete_items(self):
         self.buckets.BucketItems=[]
         self.buckets.createItem('Fashion','By20')
         output=self.buckets.deleteItem('By20')
         self.assertEqual(1,output,"Item successfully deleted") 
 
-    	#defining method to test editing an  existing item
+        #defining method to test editing an  existing item
     def tests_edit_item(self):
         self.buckets.BucketItems=[]
         self.buckets.createItem('golf', 'By30')
         output=self.buckets.itemEdit('by40','By30')
         self.assertEqual(1,output,"Item successfully edited")
 
-    #defining method to test editing an empty item field
+      #defining method to test editing an empty item field
     def tests_edit_null_item(self):
         self.buckets.BucketItems=[]
         self.buckets.createItem('golf', 'By30')
         output=self.buckets.itemEdit('','By30')
-        self.assertEqual(2,output,"The item can not be empty")             
+        self.assertEqual(2,output,"The item can not be empty")    
 
 
 
 if __name__ == "__main__":
-    unittest.main()              
+    unittest.main()        
