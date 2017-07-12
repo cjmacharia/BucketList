@@ -126,7 +126,7 @@ def delete(post):
 	else:
 		return render_template('create.html')
 	return render_template('login.html')
-	
+
 #defining route to get the post to edit
 @app.route('/editBucketlist/<post>')
 def editBucketlist(post):
@@ -138,3 +138,27 @@ def editBucketlist(post):
 		return redirect('/myBuckets' )
 	else:
 		return render_template('login.html')	
+
+#defining route to edit a bucketlist
+@app.route('/editBucket/', methods=['GET', 'POST'])
+def editBucket():
+	if g.user:
+		if request.method=="POST":
+			old=request.form['old']
+			post=request.form['post']
+			describe =request.form['description']
+			owner = session['email']
+			result=NewBucketlist.edit(old,post,describe,owner)
+			if result==1:
+				message="bucket successfully updated"
+				result = NewBucketlist.get_bucket_lists()       
+				return render_template('mybucketlist.html',datas=result)
+			elif result==2:
+				print("the bucketlist already exist")
+				return redirect('/myBuckets' )	
+			elif result==3:
+				print("please fill all the fields")
+				return redirect('/myBuckets' )
+		
+	else:
+		return render_template('login.html')
