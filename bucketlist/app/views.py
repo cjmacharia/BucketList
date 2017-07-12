@@ -126,3 +126,15 @@ def delete(post):
 	else:
 		return render_template('create.html')
 	return render_template('login.html')
+	
+#defining route to get the post to edit
+@app.route('/editBucketlist/<post>')
+def editBucketlist(post):
+	print(post)
+	if g.user:
+		res=NewBucketlist.get_bucket_list(post)
+		if (res):
+			return render_template('edit.html', data=res)	
+		return redirect('/myBuckets' )
+	else:
+		return render_template('login.html')	
