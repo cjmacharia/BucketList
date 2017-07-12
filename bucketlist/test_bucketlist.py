@@ -25,3 +25,9 @@ class Buckettest(unittest.TestCase):
     def test_if_description_empty(self):
         output=self.buckets.create('By 28','','anto@gmail.com')
         self.assertEqual(3,output, "please fill the description")
+        
+        # defining method to test for adding a bucket list That already exists
+    def tests_if_bucket_exists(self):
+        self.buckets.create('By28','my dreams by 28','anto@gmail.com')  
+        output=self.buckets.create('By28', 'my goals','anto@gmail.com')
+        self.assertEqual(2,output, "That bucket already exists!")     
