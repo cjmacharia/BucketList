@@ -37,3 +37,33 @@ def reg():
 				return render_template ('register.html', data=error)	
 	else:
 			return render_template ('register.html')	
+
+@app.route('/login/', methods=['GET', 'POST'])
+def logins():
+	if request.method == "POST":
+		emailLogin=request.form['email']
+		passLogin=request.form['password']
+		loginResult =newUser.login(emailLogin,passLogin)
+		if loginResult==1:
+			name = newUser.get_user_name(emailLogin)
+			email = newUser.get_user_email(emailLogin)
+			print('done')
+			session['user']=name
+			session['email']=email
+			print(session['email'])
+			return render_template ('home.html', data=session)
+		elif loginResult==2:
+			error = "Password mismatch"
+			return render_template ('login.html', data=error)	
+		elif loginResult==3:
+			error = "The user does not exist please register and try again"
+			return render_template ('login.html', data=error)	
+		elif loginResult==4:
+			error="Please fill all the fields"
+			return render_template ('register.html', data=error)	 	
+		else:
+			error = "Wrong credentials please try again"
+			return render_template ('login.html',data=error) 
+	else:
+		return render_template('login.html')
+		
