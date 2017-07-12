@@ -221,5 +221,12 @@ def deleteItem():
 			#return redirect('/myBuckets/')
 		else:
 			return render_template('create.html')
-	return render_template('login.html')		
+	return render_template('login.html')
+	
+#defining route to logout a user
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return redirect(url_for('logins'))
+@app.route('/home/')			
 
