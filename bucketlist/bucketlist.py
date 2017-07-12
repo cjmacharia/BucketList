@@ -12,6 +12,8 @@ class Bucketlist():
 		self.description=description
 		self.owner=owner
 
+
+		# defining method to create bucket list	
 	def create(self,post, description, owner):
 		if description!=''and post!='':
 			if post not in self.Bucketlists.keys():
@@ -25,4 +27,14 @@ class Bucketlist():
 			else:
 				return 2
 		else:
-			return 3	
+			return 3
+
+		# defining method to delete bucket list		
+	def delete(self,post):
+		if post in self.Bucketlists.keys():
+			print('found')
+			print(post)
+			del self.Bucketlists[post]		
+			return 1
+		else:
+			return 2				
