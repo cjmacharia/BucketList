@@ -66,4 +66,31 @@ def logins():
 			return render_template ('login.html',data=error) 
 	else:
 		return render_template('login.html')
-		
+
+		#defining the create bucketlist route
+@app.route('/create/', methods=['GET', 'POST'])
+def createBucketlist():
+	if g.user:
+		if request.method=="POST":
+			post=request.form['post']
+			describe =request.form['description']
+			owner = session['email']
+			result=NewBucketlist.create(post,describe,owner)
+			if result==2:
+				error ="that bucket title already exists"
+				return render_template('create.html' , data=error)
+			if result==3:
+
+				error ="Please fill all the fields"
+				return render_template('create.html' , data=error)
+					
+			if result !=2 and result!=3:
+				data = NewBucketlist.Bucketlists
+				return redirect('/myBuckets')		
+			return render_template('mybucketlist.html')
+		else:
+			return render_template('create.html' )	
+	else:
+		return render_template('login.html' )	
+
+@app.route('/myBuckets/', methods=['GET'])		
