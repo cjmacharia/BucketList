@@ -30,11 +30,18 @@ class Usertest(unittest.TestCase):
     def test_null_password(self):
         output=self.newUser.register('test@email.com','mash','','pass')
         self.assertEqual(5,output, "Please the password filed") 
-        
+
      # defining method to test for created user's password is equal to confirm password 
     def test_cpassword_is_password(self):
         output=self.newUser.register('test@email.com', 'cj', 'pass', 'pss')    
-        self.assertEqual(3,output, "password mismatch")         
+        self.assertEqual(3,output, "password mismatch")    
+
+    # defining method to test if login password is equal to register passsword
+    def test_wrong_login_password(self):
+        self.newUser.users = {}
+        self.newUser.register( 'email@mail.com', 'cj','pass', 'pass')
+        result = self.newUser.login('email@mail.com', 'pass123')
+        self.assertEqual(2,result,"password mismatch")         
             
 if __name__ == "__main__":
     unittest.main()        
