@@ -11,3 +11,18 @@ class Bucketlist():
 		self.post=post
 		self.description=description
 		self.owner=owner
+
+	def create(self,post, description, owner):
+		if description!=''and post!='':
+			if post not in self.Bucketlists.keys():
+				self.Bucketlists[post] = {
+				'description':description,
+				'post':post,
+				'owner':owner,
+				}
+				
+				return 1
+			else:
+				return 2
+		else:
+			return 3	
