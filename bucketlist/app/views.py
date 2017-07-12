@@ -93,4 +93,11 @@ def createBucketlist():
 	else:
 		return render_template('login.html' )	
 
-@app.route('/myBuckets/', methods=['GET'])		
+#defining route to get all buckets
+@app.route('/myBuckets/', methods=['GET'])
+def getBuckets():
+	if g.user:
+		result = NewBucketlist.get_bucket_lists()       
+		return render_template('mybucketlist.html',datas=result)
+	else:
+		return render_template('login.html')		
