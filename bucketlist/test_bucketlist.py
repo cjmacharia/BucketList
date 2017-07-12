@@ -71,5 +71,11 @@ class Buckettest(unittest.TestCase):
     def tests_Add_item(self):
         self.buckets.BucketItems=[]
         output=self.buckets.createItem('Fashion', 'By20')
-        self.assertEqual(1,output,"Item successfully added")     
-    
+        self.assertEqual(1,output,"Item successfully added")  
+           
+    #defining method to test deleting an item that doesn't exist in a bucketlist
+    def tests_delete_null_item(self):
+        self.buckets.BucketItems=[]
+        self.buckets.createItem('Fashion', 'By20')
+        output=self.buckets.deleteItem('fish')
+        self.assertEqual(2,output,"Cannot Delete an item that does not exist")
