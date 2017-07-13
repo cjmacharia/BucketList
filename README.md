@@ -37,8 +37,11 @@ a python virtual environment
 If you are on Linux, use the following commands in your terminal:
 
 $ sudo pip install virtualenv
+
 $ mkdir bucket_list
+
 $ cd bucket_list
+
 $ virtualenv venv
 
 you can then Activate virtual environment
