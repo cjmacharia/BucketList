@@ -1,6 +1,7 @@
 language: python
 python:
-  "3.6"
+  - "2.7"
+  - "3.5[.x]"
 install:
   "pip install -r requirements.txt"
   "pip install unittest2"
