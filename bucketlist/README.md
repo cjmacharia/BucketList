@@ -11,10 +11,10 @@ Contains HTML/CSS templates for Bucket List front end application.
 
 Its developed in flask and its features include:
 
-.A user can be able to register in the application.
-.A user can Login to application.
-.A logged in user can Create, Read, Update and Delete a BucketList.
-.A logged in user, can to add, update, view or delete a Buckelist item (non-persistent data)
+#A user can be able to register in the application.
+#A user can Login to application.
+#A logged in user can Create, Read, Update and Delete a BucketList.
+#A logged in user, can to add, update, view or delete a Buckelist item (non-persistent data)
 
 
 # Prerequisites
@@ -23,6 +23,7 @@ You will need python 2.6 or a later python version.
 
 # Requirements
 Flask==0.12.2
+
 Jinja2==2.9.6
 
 # Setup
