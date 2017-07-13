@@ -1,0 +1,12 @@
+language: python
+python:
+  - "2.7"
+  - "3.5[.x]"
+install:
+  "pip install -r requirements.txt"
+  "pip install unittest2"
+script:
+  "python backend/test_bucketList.py"
+  "python backend/test_user.py"
+  "coverage run test_for_class_User.py"
+after_success: coveralls
