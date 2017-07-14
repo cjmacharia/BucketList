@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/cjmash/BucketList.svg?branch=develop)](https://travis-ci.org/cjmash/BucketList)
 
+[![Coverage Status](https://coveralls.io/repos/github/cjmash/BucketList/badge.svg?branch=develop)](https://coveralls.io/github/cjmash/BucketList?branch=develop)
+
 # BucketList
 This repository contains the following:
 User interface for a bucketlist
