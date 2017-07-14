@@ -1,7 +1,5 @@
 [![Build Status](https://travis-ci.org/cjmash/BucketList.svg?branch=master)](https://travis-ci.org/cjmash/BucketList)
 
-7836f5b1ed2c53771f00783c910ef88a79ced88ebaabcf693bc52c1d0c5af1ee
-
 # BucketList
 This repository contains the following:
 User interface for a bucketlist
