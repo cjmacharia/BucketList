@@ -4,4 +4,4 @@ python:
 install:
     "pip install -r requirements.txt"
 script:
-     python bucketlist/test_user.py,
+     python BucketList/bucketlist/test_user.py,
