@@ -1,3 +1,4 @@
+#omit this folder
 [report]
 show_missing = True
 omit =
