@@ -6,4 +6,5 @@ install:
 script:
      - "python test_bucketlist.py"
      - "python test_user.py"
+     - "coverage run test_user.py"
 after_success: coveralls
