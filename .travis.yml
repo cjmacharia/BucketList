@@ -7,4 +7,7 @@ script:
      - "python test_bucketlist.py"
      - "python test_user.py"
      - "coverage run test_user.py"
+     - "coverage run test_bucketlist.py"
+     - "coverage run manage.py"
+     - "coverage run run.py"
 after_success: coveralls
