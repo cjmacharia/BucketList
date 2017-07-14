@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/cjmash/BucketList.svg?branch=master)](https://travis-ci.org/cjmash/BucketList)
 
 # BucketList
 This repository contains the following:
