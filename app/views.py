@@ -84,7 +84,7 @@ def createBucketlist():
 					
 			if result !=2 and result!=3:
 				data = NewBucketlist.Bucketlists
-				return redirect('/myBuckets'datas=data)		
+				return redirect('/myBuckets', datas=data)		
 			return render_template('mybucketlist.html')
 		else:
 			return render_template('create.html' )	
