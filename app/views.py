@@ -1,7 +1,7 @@
 from app import app
 from user import User
 from bucketlist import Bucketlist
-from flask import Flask, session, render_template, request, redirect, g, url_for
+from flask import  session, render_template, request, redirect, g, url_for
 import os
 
 # Instantiating objects
@@ -84,7 +84,7 @@ def createBucketlist():
 					
 			if result !=2 and result!=3:
 				data = NewBucketlist.Bucketlists
-				return redirect('/myBuckets')		
+				return redirect('/myBuckets'datas=data)		
 			return render_template('mybucketlist.html')
 		else:
 			return render_template('create.html' )	
@@ -109,13 +109,13 @@ def delete(post):
 			result=NewBucketlist.delete(post)
 			if result==True:
 				message="successfully deleted"
-				return redirect('/myBuckets' )
+				return redirect('/myBuckets', data=message )
 			else:
-				message="not deleted"
-				return redirect('/myBuckets' )				
+				message="Bucket not deleted"
+				return redirect('/myBuckets', data=message)				
 		else:
 			message="not found"
-			return render_template('create.html')
+			return render_template('create.html'data=message)
 	else:
 		return render_template('create.html')
 	return render_template('login.html')
@@ -144,7 +144,7 @@ def editBucket():
 			if result==1:
 				message="bucket successfully updated"
 				result = NewBucketlist.get_bucket_lists()       
-				return render_template('mybucketlist.html',datas=result)
+				return render_template('mybucketlist.html',datas=result,msg=message)
 			elif result==2:
 				return redirect('/myBuckets' )	
 			elif result==3:
@@ -205,7 +205,7 @@ def deleteItem():
 			message="successfully deleted"
 			BucketItems = NewBucketlist.getItems(post)
 			results = NewBucketlist.get_bucket_lists()			
-			return render_template('mybucketlist.html',datas=results,items=BucketItems )
+			return render_template('mybucketlist.html',msg=message,datas=results,items=BucketItems )
 			#return redirect('/myBuckets/')
 		else:
 			return render_template('create.html')
