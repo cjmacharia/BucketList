@@ -1,7 +1,7 @@
 #an empty list to store my items
 BucketItems=[]
 
-class Bucketlist():
+class Bucketlist(object):
 
 
 	Bucketlists={}
@@ -72,7 +72,7 @@ class Bucketlist():
 		else:
 			return 2
 		# defining method to get one bucket lists		
-	def getItems(self,post):
+	def getItems(self):
 		return BucketItems		
 
 		# defining method to create an item in a bucket	
@@ -92,5 +92,5 @@ class Bucketlist():
 		    if BucketItems[dic]['item'] == item:
 		        del BucketItems[dic]			
 		        return 1
-		else:
-			return 2		
+		    else:
+		    	return 2      		

@@ -84,7 +84,7 @@ def createBucketlist():
 					
 			if result !=2 and result!=3:
 				data = NewBucketlist.Bucketlists
-				return redirect('/myBuckets', datas=data)		
+				return render_template('mybucketlist.html', datas=data)		
 			return render_template('mybucketlist.html')
 		else:
 			return render_template('create.html' )	
@@ -162,7 +162,7 @@ def addItems():
 			post =request.form['post']
 			result=NewBucketlist.createItem(post,item)
 			if result==1:
-				BucketItems = NewBucketlist.getItems(post)
+				BucketItems = NewBucketlist.getItems()
 				result = NewBucketlist.get_bucket_lists()       
 				return render_template('mybucketlist.html',datas=result,items=BucketItems)			
 		else:
@@ -179,7 +179,7 @@ def editItem(item):
 			old=request.form['old']
 			result=NewBucketlist.itemEdit(item,old)
 			if result==1:
-				BucketItems = NewBucketlist.getItems(post)
+				BucketItems = NewBucketlist.getItems()
 				result = NewBucketlist.get_bucket_lists()       
 				return render_template('mybucketlist.html',datas=result,items=BucketItems)
 			elif result==2:
@@ -187,7 +187,7 @@ def editItem(item):
 			else:
 				return redirect('/myBuckets/')	
 		else:
-			BucketItems = NewBucketlist.getItems(post)
+			BucketItems = NewBucketlist.getItems()
 			for dic in BucketItems:
 				result = NewBucketlist.get_bucket_lists()       
 				return render_template('mybucketlist.html',datas=result,items=BucketItems)		
@@ -203,7 +203,7 @@ def deleteItem():
 		result=NewBucketlist.deleteItem(item)
 		if result==True:
 			message="successfully deleted"
-			BucketItems = NewBucketlist.getItems(post)
+			BucketItems = NewBucketlist.getItems()
 			results = NewBucketlist.get_bucket_lists()			
 			return render_template('mybucketlist.html',msg=message,datas=results,items=BucketItems )
 			#return redirect('/myBuckets/')
