@@ -1,7 +1,7 @@
-from flask import Flask, session, render_template, request, redirect, g, url_for
+from flask import Flask, session, render_template, request, g, url_for
 import re
 users = {}
-class User():
+class User(object):
 
 
  	# Initializing  class instance variables
@@ -21,7 +21,6 @@ class User():
                     regex = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
                     result = email
                     if re.search(regex, result):
-                        match = re.search(regex, result)
                         users[email] = {
                         'name': name,
                         'email': email,
