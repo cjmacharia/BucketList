@@ -115,7 +115,7 @@ def delete(post):
 				return redirect('/myBuckets', data=message)				
 		else:
 			message="not found"
-			return render_template('create.html'data=message)
+			return render_template('create.html',data=message)
 	else:
 		return render_template('create.html')
 	return render_template('login.html')
