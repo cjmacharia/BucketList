@@ -24,15 +24,15 @@
               <center>
               <strong>{{ datas[item]["post"] }}</strong>
                 <span class="pull-right">
-                  <a href=""  class="btn btn-primary fa fa-plus -sm pull-right" data-toggle="modal" data-target="#myAdd{{datas[item]["post"]}}">  </a>
-                  <a href={{url_for('editBucketlist', post=datas[item]["post"])}} class="btn btn-primary fa fa-pencil -sm pull-right">  </a>
-                  <a href={{url_for('delete', post=datas[item]["post"])}} class="btn btn-primary fa fa-trash -sm pull-right">  </a>
+                  <a href=""  class="btn btn-primary fa fa-plus -sm pull-right" data-toggle="modal" data-target="#myAdd{{datas[item]["post"]}}">add</a>
+                  <a href={{url_for('editBucketlist', post=datas[item]["post"])}} class="btn btn-primary fa fa-pencil btn-sm pull-right">edit</a>
+                  <a href={{url_for('delete', post=datas[item]["post"])}} class="btn btn-primary fa fa-trash btn-sm pull-right">delete</a>
                 </span>
                 </center>
               </div>
               <div  style="margin-left: 20px">
                 <!-- <h4><strong>Description</strong></h4> -->
-                <p  style="margin-left: 5px; font-style: italic;">{{ datas[item]["description"] }} is good news</p>
+                <p  style="margin-left: 5px; font-style: italic;">{{ datas[item]["description"] }}</p>
               </div>
               <div class="panel-body" style="height: 200;overflow-y: scroll; ">      
 
@@ -49,14 +49,14 @@
                       
                         <tr>
                           <td>{{dic['item']}}</td>
-                          <td><span id="noa"></span></td>
                           <td><span class="pull-right">
                             
-                            <form class="form-horizontal" action={{url_for('deleteItem')}} method="POST">
-                              <a href=""  class="btn btn-primary fa fa-pencil -sm pull-right" data-toggle="modal" data-target="#myEdit{{dic["item"]}}">  </a>
+                            
+                              <a href=""  class="btn btn-primary fa fa-pencil btn-xm pull-right" data-toggle="modal" data-target="#myEdit{{dic["item"]}}">edit</a>
+                              <form class="form-horizontal" action={{url_for('deleteItem')}} method="POST">
                               <input type="hidden"  style="width: 500px" name="post" value="{{dic["post"] }}">
                               <input type="hidden"  style="width: 500px" name="item" value="{{dic["item"] }}">
-                              <button type="submit" class="btn btn-primary fa fa-trash btn-xm pull-right">  </button>
+                              <button type="submit" class="btn btn-primary fa fa-trash btn-xm pull-right">delete</button>
                             </form>
                             
                           </span> </td>
@@ -79,14 +79,13 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="myAdd">Create an item {{datas[item]["post"]}}</h5>
+                      <h5 class="modal-title" id="myAdd">Create an item</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body form-group">
                       <input type="text" name="item" class="form-control">
-                      {{ datas[item] }}
                       <input type="hidden" name="post" value="{{ datas[item]["post"] }}" class="form-control">
                     </div>
                     <div class="modal-footer">
@@ -104,7 +103,7 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="myEdit">Edit an item {{dic["item"]}}</h5>
+                      <h5 class="modal-title" id="myEdit">Edit This item</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -134,11 +133,7 @@
 </div>
 </body>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <script type="text/javascript" src="/static/css/bootstrap/js/bootstrap.min.js" ></script>
-            <script type="text/javascript">
-              var times = new Date("03/25/2015");
-              $('#noa').append(times);
-            </script> 
+            <script type="text/javascript" src="/static/css/bootstrap/js/bootstrap.min.js" ></script> 
             </html>
 
 

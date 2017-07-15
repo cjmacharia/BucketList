@@ -154,3 +154,11 @@ background-color: #FFFFFF;
   margin-left: 930px;
   box-shadow: 3px 5px 5px 2px rgba(25,25,25,0.2);
 }
+.btn-xm {
+    padding: 1px 4px;
+    font-size: 10px;
+}
+.btn-sm {
+    padding: 1px 4px;
+    font-size: 13px;
+}

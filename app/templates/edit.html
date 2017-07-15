@@ -13,7 +13,6 @@
     </section>
    <div class="add-new" style="padding: 20px">
    {% if data %}
-   {{ data }}
      <form  action={{url_for('editBucket')}} method="POST">
      <center><h1>Edit a Bucketlist</h1></center>
      <center ><input type="text"  style="width: 500px" name="post" value="{{data["post"] }}">

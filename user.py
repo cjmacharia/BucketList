@@ -1,6 +1,6 @@
 from flask import Flask, session, render_template, request, redirect, g, url_for
 import re
-users = {u'anto@gmail.com': {'pass': u'a', 'name': u'w', 'email': u'anto@gmail.com'}}
+users = {}
 class User():
 
 
@@ -27,8 +27,6 @@ class User():
                         'email': email,
                         'pass': password,
                         }
-                        print(users)
-                    
                         return  1
                     else:
                         return 2 
@@ -47,7 +45,6 @@ class User():
                 pword=result['pass']
                 if pword==password:
                     return 1
-                    print ('done')
                 else:
                     return 2
             else:

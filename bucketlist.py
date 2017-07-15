@@ -32,8 +32,6 @@ class Bucketlist():
 		# defining method to delete bucket list		
 	def delete(self,post):
 		if post in self.Bucketlists.keys():
-			print('found')
-			print(post)
 			del self.Bucketlists[post]		
 			return 1
 		else:
@@ -83,7 +81,6 @@ class Bucketlist():
 			for dic in range(len(BucketItems)):
 			    if BucketItems[dic]['item'] == old:
 			        del BucketItems[dic]['item']
-			        print(item)	
 			        BucketItems[dic]['item'] = item
 			        return 1
 		else:
@@ -91,11 +88,9 @@ class Bucketlist():
 
 		# defining method to delete an item from bucket			
 	def deleteItem(self,item):
-		print(BucketItems)
 		for dic in range(len(BucketItems)):
 		    if BucketItems[dic]['item'] == item:
-		        del BucketItems[dic]
-		        print(BucketItems)			
+		        del BucketItems[dic]			
 		        return 1
 		else:
 			return 2		

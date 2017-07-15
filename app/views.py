@@ -21,7 +21,6 @@ def reg():
 			result=newUser.register(email,name,password,cpassword)
 			if result ==1:
 				session['user']=name
-				print("hello",session['user'])
 				return render_template('login.html')
 			elif result ==5:
 				msg= ("please fill all the fields")
@@ -48,10 +47,8 @@ def logins():
 		if loginResult==1:
 			name = newUser.get_user_name(emailLogin)
 			email = newUser.get_user_email(emailLogin)
-			print('done')
 			session['user']=name
 			session['email']=email
-			print(session['email'])
 			return render_template ('home.html', data=session)
 		elif loginResult==2:
 			error = "Password mismatch"
@@ -107,22 +104,17 @@ def getBuckets():
 @app.route('/delete/<post>')
 def delete(post):
 	if g.user:
-		print(post)
-		print(NewBucketlist.get_bucket_lists())
 		res=NewBucketlist.get_bucket_list(post)
 		if (res):
 			result=NewBucketlist.delete(post)
 			if result==True:
 				message="successfully deleted"
-				print(message)
 				return redirect('/myBuckets' )
 			else:
 				message="not deleted"
-				print(message)
 				return redirect('/myBuckets' )				
 		else:
 			message="not found"
-			print(message)
 			return render_template('create.html')
 	else:
 		return render_template('create.html')
@@ -131,7 +123,6 @@ def delete(post):
 #defining route to get the post to edit
 @app.route('/editBucketlist/<post>')
 def editBucketlist(post):
-	print(post)
 	if g.user:
 		res=NewBucketlist.get_bucket_list(post)
 		if (res):
@@ -155,10 +146,8 @@ def editBucket():
 				result = NewBucketlist.get_bucket_lists()       
 				return render_template('mybucketlist.html',datas=result)
 			elif result==2:
-				print("the bucketlist already exist")
 				return redirect('/myBuckets' )	
 			elif result==3:
-				print("please fill all the fields")
 				return redirect('/myBuckets' )
 		
 	else:
@@ -194,7 +183,6 @@ def editItem(item):
 				result = NewBucketlist.get_bucket_lists()       
 				return render_template('mybucketlist.html',datas=result,items=BucketItems)
 			elif result==2:
-				print("No result")
 				return redirect('/myBuckets/')
 			else:
 				return redirect('/myBuckets/')	
@@ -215,7 +203,6 @@ def deleteItem():
 		result=NewBucketlist.deleteItem(item)
 		if result==True:
 			message="successfully deleted"
-			print(message)
 			BucketItems = NewBucketlist.getItems(post)
 			results = NewBucketlist.get_bucket_lists()			
 			return render_template('mybucketlist.html',datas=results,items=BucketItems )
