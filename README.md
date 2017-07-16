@@ -1,6 +1,5 @@
+
 [![Build Status](https://travis-ci.org/cjmash/BucketList.svg?branch=develop)](https://travis-ci.org/cjmash/BucketList)     [![Coverage Status](https://coveralls.io/repos/github/cjmash/BucketList/badge.svg?branch=develop)](https://coveralls.io/github/cjmash/BucketList?branch=develop)    [![Code Health](https://landscape.io/github/cjmash/BucketList/develop/landscape.svg?style=flat)](https://landscape.io/github/cjmash/BucketList/develop)
-
-
 
 # BucketList
 This repository contains the following:
