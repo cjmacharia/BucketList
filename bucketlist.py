@@ -1,16 +1,16 @@
 #an empty list to store my items
-BucketItems=[]
+BucketItems = []
 
 class Bucketlist(object):
 
 
-	Bucketlists={}
+	Bucketlists = {}
 	
 		#initializing class instance variables
 	def __init__(self,post=None,description=None,owner=None):
-		self.post=post
-		self.description=description
-		self.owner=owner
+		self.post = post
+		self.description = description
+		self.owner = owner
 
 
 		# defining method to create bucket list	
@@ -64,9 +64,9 @@ class Bucketlist(object):
 		# defining method to create an item in a bucket
 	def createItem(self,post,item):
 		if item !='':
-			items={}
-			items['item']=item 
-			items['post']=post
+			items = {}
+			items['item'] = item 
+			items['post'] = post
 			BucketItems.append(items)
 			return 1
 		else:

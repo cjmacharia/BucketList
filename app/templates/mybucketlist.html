@@ -19,6 +19,7 @@
 <div class="container-fluid">
         {% if datas %}
         {% for item in datas %}
+
         <div class="col-md-4 ">  
           <div class="panel panel-info">
             <!-- {{ datas[item]["post"] }} -->
@@ -82,6 +83,8 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="myAdd">Create an item</h5>
+                      {{item["post"]}}
+                      {{datas[item]["post"]}}
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
