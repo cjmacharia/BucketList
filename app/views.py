@@ -84,8 +84,10 @@ def createBucketlist():
 					
 			if result !=2 and result!=3:
 				data = NewBucketlist.Bucketlists
-				return render_template('mybucketlist.html', datas=data)		
-			return render_template('mybucketlist.html')
+				result = NewBucketlist.get_bucket_lists()  
+				BucketItems = NewBucketlist.getItems()  
+				return render_template('mybucketlist.html', datas=data , items=BucketItems)		
+			return redirect('/myBuckets/')
 		else:
 			return render_template('create.html' )	
 	else:
@@ -95,8 +97,9 @@ def createBucketlist():
 @app.route('/myBuckets/', methods=['GET'])
 def getBuckets():
 	if g.user:
-		result = NewBucketlist.get_bucket_lists()       
-		return render_template('mybucketlist.html',datas=result)
+		result = NewBucketlist.get_bucket_lists()   
+		BucketItems = NewBucketlist.getItems()    
+		return render_template('mybucketlist.html',datas=result, items=BucketItems)
 	else:
 		return render_template('login.html')		
 
@@ -109,10 +112,10 @@ def delete(post):
 			result=NewBucketlist.delete(post)
 			if result==True:
 				message="successfully deleted"
-				return redirect('/myBuckets', data=message )
+				return redirect(url_for('getBuckets', data=message ))
 			else:
 				message="Bucket not deleted"
-				return redirect('/myBuckets', data=message)				
+				return redirect(url_for('getBuckets', data=message ))				
 		else:
 			message="not found"
 			return render_template('create.html',data=message)
@@ -143,8 +146,9 @@ def editBucket():
 			result=NewBucketlist.edit(old,post,describe,owner)
 			if result==1:
 				message="bucket successfully updated"
-				result = NewBucketlist.get_bucket_lists()       
-				return render_template('mybucketlist.html',datas=result,msg=message)
+				result = NewBucketlist.get_bucket_lists()  
+				BucketItems = NewBucketlist.getItems()     
+				return render_template('mybucketlist.html',datas=result,msg=message,items=BucketItems)
 			elif result==2:
 				return redirect('/myBuckets' )	
 			elif result==3:
