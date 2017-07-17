@@ -28,9 +28,22 @@ A logged in user, can to add, update, view or delete a Buckelist item (non-persi
 You will need python 2.6 or a later python version.
 
 # Requirements
+click==6.7
+
 Flask==0.12.2
 
+coverage==4.4.1
+
+coveralls==1.1
+
+itsdangerous==0.24
+
 Jinja2==2.9.6
+
+MarkupSafe==1.0
+
+Werkzeug==0.12.2
+
 
 # Setup
 
