@@ -1,6 +1,6 @@
 from flask import Flask, session, render_template, request, g, url_for
 import re
-users = {'anto@gmail.com': {'name': 'james', 'email': 'anto@gmail.com', 'pass': 'a'},'foo@gmail.com': {'name': 'awery', 'email': 'foo@gmail.com', 'pass': 'a'}}
+users = {}
 class User(object):
 
 
