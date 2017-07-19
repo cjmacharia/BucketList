@@ -5,13 +5,15 @@
 </head>
 <body style="background-image: none; background-color: #DDD">
 <section class="top">
-<div class="icon-left"><a href="/home/">Bucketlist</a></div>
+<div class="icon-left"><a href="/home/">home</a></div>
       <div class="icon-right">
       <div class="icon link"><a href="/myBuckets">My buckets</a></div>
         <div class="icon link"><a href={{url_for('logout')}}>logout</a></div>
       </div>
     </section>
+    {% if data%}
     <center><div class="error">{{ data }}</div></center>
+    {% endif %}
    <div class="add-new" style="padding: 20px">
      <form  action={{url_for('createBucketlist')}} method="POST">
      <center><h1>Create a Bucketlist</h1></center>
@@ -22,5 +24,5 @@
      </form>
    </div>
 </body>
-<center><footer class="footer"><small>copyright @ BootcampBucketlist 2017|developed by James collins Macharia #TIA  </small></footer></center>
+<center><footer class="footer" style="margin-top: 130px;"><small>copyright @ BootcampBucketlist 2017|developed by James collins Macharia #TIA  </small></footer></center>
 </html>

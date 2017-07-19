@@ -69,10 +69,13 @@ def logins():
 def createBucketlist():
 	if g.user:
 		if request.method == "POST":
-			post = request.form['post']
+			sentence = request.form['post']
+			Postlist = sentence.split(' ')
+			post = ''.join(Postlist)
 			describe = request.form['description']
 			owner = session['email']
 			result = NewBucketlist.create(post,describe,owner)
+			print(post)
 			if result == 2:
 				error = "that bucket title already exists"
 				return render_template('create.html' , data=error)
@@ -81,11 +84,10 @@ def createBucketlist():
 				error = "Please fill all the fields"
 				return render_template('create.html' , data=error)
 					
-			if result !=2 and result!=3:
-				data = NewBucketlist.Bucketlists
-				result = NewBucketlist.get_bucket_lists()  
+			if result == 1:
+				result = NewBucketlist.get_mybucket_lists(owner)  
 				BucketItems = NewBucketlist.getItems()  
-				return render_template('mybucketlist.html', datas=data , items=BucketItems)		
+				return render_template('mybucketlist.html', datas=result , items=BucketItems)		
 			return redirect('/myBuckets/')
 		else:
 			return render_template('create.html' )	
@@ -96,9 +98,14 @@ def createBucketlist():
 @app.route('/myBuckets/', methods=['GET'])
 def getBuckets():
 	if g.user:
-		result = NewBucketlist.get_bucket_lists()   
-		BucketItems = NewBucketlist.getItems()    
-		return render_template('mybucketlist.html',datas=result, items=BucketItems)
+		owner = session['email']
+		result = NewBucketlist.get_mybucket_lists(owner)  
+		BucketItems = NewBucketlist.getItems()  
+		if (result != {}):
+			return render_template('mybucketlist.html',datas=result, items=BucketItems)
+		else:
+			error = "create a bucket first"
+			return render_template('create.html' , data=error)
 	else:
 		return render_template('login.html')		
 
@@ -139,20 +146,21 @@ def editBucket():
 	if g.user:
 		if request.method == "POST":
 			old = request.form['old']
-			post = request.form['post']
+			sentence = request.form['post']
+			Postlist = sentence.split(' ')
+			post = ''.join(Postlist)
 			describe = request.form['description']
 			owner = session['email']
 			result = NewBucketlist.edit(old,post,describe,owner)
 			if result == 1:
 				message = "bucket successfully updated"
-				result = NewBucketlist.get_bucket_lists()  
+				result = NewBucketlist.get_mybucket_lists(owner)
 				BucketItems = NewBucketlist.getItems()     
 				return render_template('mybucketlist.html',datas=result,msg=message,items=BucketItems)
 			elif result == 2:
 				return redirect('/myBuckets' )	
 			elif result == 3:
-				return redirect('/myBuckets' )
-		
+				return redirect('/myBuckets' )	
 	else:
 		return render_template('login.html')
 
@@ -161,13 +169,21 @@ def editBucket():
 def addItems():
 	if g.user:
 		if request.method == "POST":
-			item = request.form['item']
+			sentence = request.form['item']
+			itemlist = sentence.split(' ')
+			item = ''.join(itemlist)
 			post = request.form['post']
+			owner = session['email']
 			result = NewBucketlist.createItem(post,item)
 			if result == 1:
 				BucketItems = NewBucketlist.getItems()
-				result = NewBucketlist.get_bucket_lists()       
+				result = NewBucketlist.get_mybucket_lists(owner)       
 				return render_template('mybucketlist.html',datas=result,items=BucketItems)			
+			elif result == 3:
+				BucketItems = NewBucketlist.getItems()
+				message = "item already exists"
+				result = NewBucketlist.get_bucket_lists()       
+				return render_template('mybucketlist.html',datas=result,items=BucketItems, data=message)	
 		else:
 			return render_template('create.html' )
 	return render_template('login.html' )	
@@ -177,13 +193,16 @@ def addItems():
 def editItem(item):
 	if g.user:
 		if request.method == "POST":
-			item = request.form['item']
+			sentence = request.form['item']
+			itemlist = sentence.split(' ')
+			item = ''.join(itemlist)
 			post = request.form['post']
 			old = request.form['old']
+			owner = session['email']
 			result = NewBucketlist.itemEdit(item,old)
 			if result == 1:
 				BucketItems = NewBucketlist.getItems()
-				result = NewBucketlist.get_bucket_lists()       
+				result = NewBucketlist.get_mybucket_lists(owner)        
 				return render_template('mybucketlist.html',datas=result,items=BucketItems)
 			elif result == 2:
 				return redirect('/myBuckets/')
@@ -203,13 +222,13 @@ def deleteItem():
 	if g.user:
 		item = request.form['item']
 		post = request.form['post']
+		owner = session['email']
 		result = NewBucketlist.deleteItem(item)
 		if result == True:
 			message = "successfully deleted"
 			BucketItems = NewBucketlist.getItems()
-			results = NewBucketlist.get_bucket_lists()			
+			results = NewBucketlist.get_mybucket_lists(owner)			
 			return render_template('mybucketlist.html',msg=message,datas=results,items=BucketItems )
-			#return redirect('/myBuckets/')
 		else:
 			return render_template('create.html')
 	return render_template('login.html')

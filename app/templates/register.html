@@ -12,21 +12,23 @@
       </div>
 
     </section>
+    {% if data %}
 <center><div class="error"> {{ data }}</div></center>
-    <div class="panel">
+{% endif%}
+    <div class="panel" style="padding:30px;padding-top: 50px">
     <label class="text"><center>Register Here</center></label>
     <div class="inputs">
       <form  action={{url_for('reg')}} method="POST">
     <center><input type="text" class= "input" name="name" placeholder="Your name"></center>
      <center><input type="email" class= "input" name="email" placeholder="Email"></center>
       <center><input type="password" class= "input" name="password" placeholder="password"></center>
-       <center><input type="password" class= "input" name="cpassword"  placeholder="cpassword"></center>
+       <center><input type="password" class= "input" name="cpassword"  placeholder="confirm password"></center>
         <center><button type="submit" class="button">Register</button></center>
       </form>
         </div>
-        <center><label ><small style="margin-top: 9px">already registered?<a href="/login">login</a></small></label></center>
+        <center><label ><small style="margin-top: 70px">already registered?<a href="/login">login</a></small></label></center>
         </div>
-<center><footer class="footer" style="margin-top: 60px ; color: #20A2AA ; background-color: rgba(255,255,255,0.5); padding: 10px"><small>copyright @ BootcampBucketlist 2017|developed by James collins Macharia #TIA</small></footer></center>
+<center><footer class="footer"><small>copyright @ BootcampBucketlist 2017|developed by James collins Macharia #TIA</small></footer></center>
 </body>
 
 </html>

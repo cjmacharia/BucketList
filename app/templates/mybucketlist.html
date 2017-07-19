@@ -2,20 +2,27 @@
 <title>My Bucketlists</title>
 <head>
   <link rel="stylesheet" type="text/css" href="..\static\css\bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="..\static\fonts\css\font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="..\static\fonts\css\font-awesome.min.css"> 
+
+</style>
+
 </head>
+
+
+
 <body style="background-color:#DDD">
-    <nav class="navbar" style="background-color:#20A2AA;">
+    <nav class="navbar" style="background-color:#20A2AA; border-radius:0 ">
        <div class="navbar-header">
-        <a class="navbar-brand" href="#">Bucketlist</a>
+        <a class="navbar-brand" style="color: white;" href="/home/">Home</a>
       </div>
       <ul class="nav navbar-nav pull-right">
-        <li class="active"><a href="/myBuckets" style="font-color:#FFFFF;">myBuckets</a></li>
-        <li class="active"><a href="/create" style="font-color:#FFFFF;">Create new</a></li> 
+        <li><a href="/create" class= "top" style="color:white;">Create new</a> </li>
+        <li><a href={{url_for('logout')}} style=" color: white; ">logout</a></li>
       </ul>
     </nav>
-    
-<center><div class="error">{{ data }}</div></center>
+    {% if data %}
+<center><div class="alert alert-danger">{{ data }}</div></center>
+{% endif %}
 <div class="container-fluid">
         {% if datas %}
         {% for item in datas %}
@@ -55,11 +62,11 @@
                           <td><span class="pull-right">
                             
                             
-                              <a href=""  class="btn btn-primary fa fa-pencil btn-xm pull-right" data-toggle="modal" data-target="#myEdit{{dic["item"]}}">edit</a>
-                              <form class="form-horizontal" action={{url_for('deleteItem')}} method="POST">
+                              <a href=""  class="btn btn-primary fa fa-pencil btn-xm pull-right" data-toggle="modal" data-target="#myEdit{{dic["item"]}}"></a>
+                              <form style="display: inline;" action={{url_for('deleteItem')}} method="POST">
                               <input type="hidden"  style="width: 500px" name="post" value="{{dic["post"] }}">
                               <input type="hidden"  style="width: 500px" name="item" value="{{dic["item"] }}">
-                              <button type="submit" class="btn btn-primary fa fa-trash btn-xm pull-right">delete</button>
+                              <button type="submit" class="btn btn-primary fa fa-trash btn-xm pull-right"></button>
                             </form>
                             
                           </span> </td>
@@ -67,8 +74,8 @@
                         {% endif %}
 
                         {% endfor %}
-                        {% else %}
-                        <td class="alert alert-danger">this bucket has no items</td>
+                        
+                        
                         {% endif %}  
                       </tbody>
                     </table>
@@ -132,12 +139,12 @@
                     {% endfor %}
                     {% else %}
                       <center><h3 class="alert alert-danger col-md-4 col-md-offset-3">you have no Bucket lists not available at the moment</h3></center> 
-                      <a href="http://127.0.0.1:5000/create" class="btn btn-primary fa fa-plus -lg pull-right">Add new</a>
+                      <a href="/create" class="btn btn-primary fa fa-plus -lg pull-right">Add new</a>
 
                       {% endif %}
 </div>
 </body>
-<center><footer class="footer" ><small>copyright @ BootcampBucketlist 2017|developed by James collins Macharia #TIA</small></footer></center>
+<center><footer class="footer" style="margin-top: 200px ; color: #20A2AA ; background-color: rgba(255,255,255,0.5); padding: 10px"><small>copyright @ BootcampBucketlist 2017|developed by James collins Macharia #TIA</small></footer></center>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script type="text/javascript" src="/static/css/bootstrap/js/bootstrap.min.js" ></script> 
             </html>
