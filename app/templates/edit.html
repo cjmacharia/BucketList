@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <head>
-	<title>create bucketlist</title>
+	<title>Edit bucketlist</title>
 	<link rel="stylesheet" type="text/css" href="..\static\css\app.css">
 </head>
 <body style="background-image: none; background-color: #DDD">
 <section class="top">
-<div class="icon-left"><a href="/home/">home</a></div>
+<div class="icon-left"><a href="/home/">Home</a></div>
       <div class="icon-right">
-      <div class="icon link"><a href="/myBuckets">My buckets</a></div>
-        <div class="icon link"><a href={{url_for('logout')}}>logout</a></div>
+      <div class="icon link"><a href="/mybuckets">My buckets</a></div>
+        <div class="icon link"><a href={{url_for('logout')}}>Logout</a></div>
       </div>
     </section>
+    {% if msg%}
     <center><div class="error">{{ msg }}</div></center>
+    {% endif %}
    <div class="add-new" style="padding: 20px">
    {% if data %}
-     <form  action={{url_for('editBucket')}} method="POST">
+     <form  action={{url_for('editbucket')}} method="POST">
      <center><h1>Edit a Bucketlist</h1></center>
      <center ><input type="text"  style="width: 500px" name="post" value="{{data["post"] }}">
      <input type="hidden"  style="width: 500px" name="old" value="{{data["post"] }}"></center>

@@ -1,23 +1,23 @@
-from flask import Flask, session, render_template, request, g, url_for
 import re
-users = {}
+
+users = {'foo@gmail.com': {'name': 'dsd', 'email': 'foo@gmail.com', 'pass': 'a'}}
+
 class User(object):
+    """
+    Class to regihandle  user functions
+    """
 
-
- 	# Initializing  class instance variables
     def __init__(self, name=None, email=None, password=None):
+        """ Initializing  class instance variables"""
         self.name = name
         self.email = email
         self.password = password
 
-        #defining method to create account
-    def register(self,email, name,password, cpassword):       
-            
-        if  name!='' and email!='' and password!='':
-
+    def register(self, email, name, password, cpassword):
+        """defining method to create account"""           
+        if  name != '' and email != '' and password != '':
             if email not in users.keys():
-
-                if password==cpassword:
+                if password == cpassword:
                     regex = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
                     result = email
                     if re.search(regex, result):
@@ -27,8 +27,7 @@ class User(object):
                         'pass': password,
                         }
                         print(users)
-                        return  1
-                        
+                        return  1                       
                     else:
                         return 2 
                 else:
@@ -37,14 +36,14 @@ class User(object):
                 return 4
         else:
             return 5
-
-        # defining method to validate user             
+             
     def login(self, email, password):
-        if email!='' and password!='':
+        """ defining method to validate user"""
+        if email != '' and password != '':
             if email in users.keys():
-                result=users[email]
-                pword=result['pass']
-                if pword==password:
+                result = users[email]
+                pword = result['pass']
+                if pword == password:
                     return 1
                 else:
                     return 2
@@ -52,19 +51,19 @@ class User(object):
                 return 3
         else:
             return 4  
-
-        #function to get a user's name            
+            
     def get_user_name(self, email):
+        """function to get a user's name"""
         if email in users.keys():
-            result =users[email]
+            result = users[email]
             return result['name']
         else:
             return False
 
-        #function to get a user's email
     def get_user_email(self, email):
+        """function to get a user's email"""
         if email in users.keys():
-            result=users[email]
+            result = users[email]
             return result['email']
         else:
             return False

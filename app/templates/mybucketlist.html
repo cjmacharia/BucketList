@@ -35,7 +35,7 @@
               <strong>{{ datas[item]["post"] }}</strong>
                 <span class="pull-right">
                   <a href=""  class="btn btn-primary fa fa-plus -sm pull-right" data-toggle="modal" data-target="#myAdd{{datas[item]["post"]}}">add</a>
-                  <a href={{url_for('editBucketlist', post=datas[item]["post"])}} class="btn btn-primary fa fa-pencil btn-sm pull-right">edit</a>
+                  <a href={{url_for('editbucketlist', post=datas[item]["post"])}} class="btn btn-primary fa fa-pencil btn-sm pull-right">edit</a>
                   <a href={{url_for('delete', post=datas[item]["post"])}} class="btn btn-primary fa fa-trash btn-sm pull-right">delete</a>
                 </span>
                 </center>
@@ -63,7 +63,7 @@
                             
                             
                               <a href=""  class="btn btn-primary fa fa-pencil btn-xm pull-right" data-toggle="modal" data-target="#myEdit{{dic["item"]}}"></a>
-                              <form style="display: inline;" action={{url_for('deleteItem')}} method="POST">
+                              <form style="display: inline;" action={{url_for('deleteitem')}} method="POST">
                               <input type="hidden"  style="width: 500px" name="post" value="{{dic["post"] }}">
                               <input type="hidden"  style="width: 500px" name="item" value="{{dic["item"] }}">
                               <button type="submit" class="btn btn-primary fa fa-trash btn-xm pull-right"></button>
@@ -85,7 +85,7 @@
               </div>
             </div>
             <div class="modal fade" id="myAdd{{datas[item]["post"]}}">
-              <form method="POST" action={{url_for('addItems')}}>
+              <form method="POST" action={{url_for('additems')}}>
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -111,7 +111,7 @@
                   {% if items %}
                   {% for dic in items %}
              <div class="modal fade" id="myEdit{{dic["item"]}}">
-              <form method="POST" action={{url_for('editItem' , item=dic["item"])}}>
+              <form method="POST" action={{url_for('edititem' , item=dic["item"])}}>
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
