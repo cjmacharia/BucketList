@@ -26,15 +26,15 @@ git@github.com:cjmash/BucketList.git
 
 $ cd bucketlist
 
-#Create a virtual environment with Python 3.6
+# Create a virtual environment with Python 3.6
 
 $ virtualenv --python=python3.6 yourenvname
 
-#Activate the virtual environment you have just created
+# Activate the virtual environment you have just created
 
 $ source yourenvname/bin/activate
 
-#Install the application's dependencies from requirements.txt to the virtual environment
+# Install the application's dependencies from requirements.txt to the virtual environment
 
 $ (yourenvname) pip install -r requirements.txt
 
