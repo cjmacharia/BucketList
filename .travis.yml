@@ -4,8 +4,8 @@ python:
 install:
      "pip install -r requirements.txt"   
 script:
-     - "python tests/test_bucketlist.py"
-     - "python tests/test_user.py"
+     - "python test_bucketlist.py"
+     - "python test_user.py"
      - "coverage run test_user.py"
      - "coverage run test_bucketlist.py"
 after_success: coveralls
