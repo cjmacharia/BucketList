@@ -6,88 +6,52 @@ This repository contains the following:
 User interface for a bucketlist
 Bucket List applications with flask
 
-# USER INTERFACE
-
-Contains HTML/CSS templates for Bucket List front end application.
-
-# The BucketList Application
-
-Its developed in flask, its features include:
-
-A user can be able to register in the application.
-
-A user can Login to application.
-
-A logged in user can Create, Read, Update and Delete a BucketList.
-
-A logged in user, can to add, update, view or delete a Buckelist item (non-persistent data)
-
-
 # Prerequisites
 
-You will need python 2.6 or a later python version.
+You will need python 3.6 or a later python version.
 
-# Requirements
-click==6.7
+the requirements are in the requirements.txt
 
-Flask==0.12.2
+# installing
+clone the repository 
 
-coverage==4.4.1
+FOR HTTPS
+https://github.com/cjmash/BucketList.git
 
-coveralls==1.1
+FOR SSH 
 
-itsdangerous==0.24
+git@github.com:cjmash/BucketList.git
 
-Jinja2==2.9.6
+# Change Directory into the project folder
 
-MarkupSafe==1.0
+$ cd bucketlist
 
-Werkzeug==0.12.2
+#Create a virtual environment with Python 3.6
 
+$ virtualenv --python=python3.6 yourenvname
 
-# Setup
+#Activate the virtual environment you have just created
 
-we will start bt setting up
-a python virtual environment
+$ source yourenvname/bin/activate
 
-If you are on Linux, use the following commands in your terminal:
+#Install the application's dependencies from requirements.txt to the virtual environment
 
-$ sudo pip install virtualenv
-
-$ mkdir bucket_list
-
-$ cd bucket_list
-
-$ virtualenv venv
-
-you can then Activate virtual environment
-
-$ source /scripts/activate/
-
-# Setting up Flask
-
-run  the following command in your terminal while in the virtual env folder:
-
-$ pip install Flask
-
-Setting up Pylint for linting to ensure PEP8 style guides.
-
-$ sudo apt-get install pylint
+$ (yourenvname) pip install -r requirements.txt
 
 # Set up Unit Test Environment
 
 run the following command to install nose unit testing environment:
 
-$ pip install nose
+$  (yourenvname) pip install nose
 
 This will enable you to run sngle file tests like.
 
-$ nosetests test_User.py
+$ (yourenvname) nosetests -v
 
 # Running the program
 
-Open the terminal and cd into the directory you extracted the project.
 Run the program by typing the command in your terminal : 
-python run.py
+
+$  (yourenvname) python run.py
 
 you are now good to go
