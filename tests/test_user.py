@@ -1,5 +1,9 @@
+
+import sys
+sys.path.append('C:/Users/cj/Documents/indented/BucketList/')
 import unittest
-from user import User
+from model.user import User
+
 
 class Usertest(unittest.TestCase):
     """

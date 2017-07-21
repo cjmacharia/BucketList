@@ -1,9 +1,8 @@
-from user import User
 import os
+from model.user import User
+from model.bucketlist import Bucketlist
 from flask import  session, render_template, request, redirect, g, url_for
-from bucketlist import Bucketlist
 from app import app
-
 
 newuser = User()
 """Instantiating objects"""

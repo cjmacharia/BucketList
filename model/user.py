@@ -4,7 +4,7 @@ users = {'foo@gmail.com': {'name': 'dsd', 'email': 'foo@gmail.com', 'pass': 'a'}
 
 class User(object):
     """
-    Class to regihandle  user functions
+    Class to handle  user functions
     """
 
     def __init__(self, name=None, email=None, password=None):
