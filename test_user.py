@@ -17,8 +17,9 @@ class Usertest(unittest.TestCase):
     def test_create_account(self):
         """defining method to test for creating user account"""
         self.newUser.users = {}
+        current_count = len(self.newUser.users)
         result = self.newUser.register( 'email@mail.com', 'name', 'cj', 'cj')
-        self.assertEqual(1, result, "User succesfully created")   
+        self.assertEqual(current_count+1, result, "User succesfully created")   
 
     def test_register_null_name(self):
         """defining method to test for creating user account with an empty name field"""

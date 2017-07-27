@@ -92,13 +92,9 @@ class Bucketlist(object):
     def createitem(self, post, item):
         """defining method to create an item in a bucket"""
         if item != '':
-            items = {}
-            items['item'] = item 
-            items['post'] = post
-            BucketItems.append(items)
+            BucketItems.append({'item': item, 'post': post})
             return 1
-        else: 
-            return 2    
+        return 2    
 
     def itemedit(self, item, old):
         """defining method to create an item in a bucket"""

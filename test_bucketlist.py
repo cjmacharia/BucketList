@@ -11,12 +11,14 @@ class Buckettest(unittest.TestCase):
     def setUp(self):
         """Defining setUp() method that runs prior to each test."""
         self.buckets = Bucketlist()       
-        
+        self.buckets.Bucketlists = {}
+
     def test_for_creating_a_bucketlist(self):
         """ defining method to test for Creating a bucket list """
-        self.buckets.Bucketlists = {}
+        current_count = len(self.buckets.Bucketlists)
         output = self.buckets.create('Bucketlist 1', 'Fashion', 'owner@gmail.com')
-        self.assertEqual(1, output, "Bucket successfully created")
+        self.assertEqual(current_count+1, output, "Bucket successfully created")
+
 
     def test_if_title_empty(self):
         """defining method to test for adding a bucket list with an empty title """
@@ -72,8 +74,9 @@ class Buckettest(unittest.TestCase):
     def tests_Add_item(self):
         """defining method to test adding an item in a bucketlist"""
         self.buckets.BucketItems = []
+        current_count = len(self.buckets.BucketItems)
         output = self.buckets.createitem('Fashion', 'By20')
-        self.assertEqual(1, output, "Item successfully added")
+        self.assertEqual(current_count+1, output, "Item successfully added")
 
     def tests_addEmpty_item(self):
         """defining method to test adding an empty item in a bucketlist"""
