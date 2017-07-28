@@ -1,75 +1,57 @@
 
+[![Build Status](https://travis-ci.org/cjmash/BucketList.svg?branch=develop)](https://travis-ci.org/cjmash/BucketList)     [![Coverage Status](https://coveralls.io/repos/github/cjmash/BucketList/badge.svg?branch=develop)](https://coveralls.io/github/cjmash/BucketList?branch=develop)    [![Code Health](https://landscape.io/github/cjmash/BucketList/develop/landscape.svg?style=flat)](https://landscape.io/github/cjmash/BucketList/develop)
+
 # BucketList
 This repository contains the following:
 User interface for a bucketlist
 Bucket List applications with flask
 
-# USER INTERFACE
-
-Contains HTML/CSS templates for Bucket List front end application.
-
-# The BucketList Application
-
-Its developed in flask, its features include:
-
-A user can be able to register in the application.
-
-A user can Login to application.
-
-A logged in user can Create, Read, Update and Delete a BucketList.
-
-A logged in user, can to add, update, view or delete a Buckelist item (non-persistent data)
-
-
 # Prerequisites
 
-You will need python 2.6 or a later python version.
+You will need python 3.6 or a later python version.
 
-# Requirements
-Flask==0.12.2
+the requirements are in the requirements.txt
 
-Jinja2==2.9.6
+# installing
+clone the repository 
 
-# Setup
+FOR HTTPS
+https://github.com/cjmash/BucketList.git
 
-we will start bt setting up
-a python virtual environment
+FOR SSH 
 
-If you are on Linux, use the following commands in your terminal:
+git@github.com:cjmash/BucketList.git
 
-$ sudo pip install virtualenv
-$ mkdir bucket_list
-$ cd bucket_list
-$ virtualenv venv
+# Change Directory into the project folder
 
-you can then Activate virtual environment
+$ cd bucketlist
 
-$ source /scripts/activate/
+# Create a virtual environment with Python 3.6
 
-# Setting up Flask
+$ virtualenv --python=python3.6 yourenvname
 
-run  the following command in your terminal while in the virtual env folder:
+# Activate the virtual environment you have just created
 
-$ pip install Flask
+$ source yourenvname/bin/activate
 
-Setting up Pylint for linting to ensure PEP8 style guides.
+# Install the application's dependencies from requirements.txt to the virtual environment
 
-$ sudo apt-get install pylint
+$ (yourenvname) pip install -r requirements.txt
 
 # Set up Unit Test Environment
 
 run the following command to install nose unit testing environment:
 
-$ pip install nose
+$  (yourenvname) pip install nose
 
 This will enable you to run sngle file tests like.
 
-$ nosetests test_User.py
+$ (yourenvname) nosetests -v
 
 # Running the program
 
-Open the terminal and cd into the directory you extracted the project.
 Run the program by typing the command in your terminal : 
-python run.py
+
+$  (yourenvname) python run.py
 
 you are now good to go
